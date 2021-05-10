@@ -37,12 +37,21 @@ public class Person {
 
 
     private  String hello(){
-        String he=("Hello, my name is " + name + " and I am "+ age +" years old. My interests are " + interests.get(0) + ", " + interests.get(1) + " and " + interests.get(2) );
-        return he;
+        String interestList = interests.get(0);
+        int count = interests.toArray().length;
+        for(int i = 1; i < count;i++){
+            if(i == count - 1){
+                interestList = interestList + " and " +  interests.get(i);
+            }
+            else {
+                interestList = interestList + ", " + interests.get(i);
+            }
+        }
+        return ("Hello, my name is " + name + " and I am "+ age +" years old. My interests are " + interestList +".");
     }
 
     public static void main(String[] args){
-        Person person = new Person( "Ryan",30,"male",Arrays.asList(new String[]{"being a hardarse", "agile", "ssd hard drives"}));
+        Person person = new Person( "Ryan",30,"male",Arrays.asList(new String[]{"being a hardarse", "agile", "ssd hard drives", "Video Games", "Sports"}));
         String greeting = person.hello();
         System.out.println(greeting);
 
